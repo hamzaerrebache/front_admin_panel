@@ -1,0 +1,62 @@
+<main id="main" class="main">
+    <div class="card p-4 mt-2">
+        <form (ngSubmit)="updateBooking()" enctype="multipart/form-data">
+        <div class="row g-3">
+            <div class="col-12 mb-4">
+                <h4 >Flight Booking</h4>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="FLYING FROM" name="pickup_location"  [(ngModel)]="booking.pickup_location">
+                    <label>pickup_location</label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="FLYING TO" name="return_location" [(ngModel)]="booking.return_location">
+                    <label>return_location</label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-floating">
+                    <input type="date" class="form-control" placeholder="DEPARTING" name="pickup_date" [(ngModel)]="booking.pickup_date">
+                    <label>pickup_date</label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-floating">
+                    <input type="date" class="form-control" placeholder="RETURNING" name="return_date" [(ngModel)]="booking.return_date">
+                    <label>return_date</label>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="form-floating">
+                    <input type="number" class="form-control" placeholder="FLYING FROM" name="vehicule_id" [(ngModel)]="booking.vehicule_id">
+                    <label>vehicule_id</label>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="form-floating">
+                    <input type="number" class="form-control" placeholder="FLYING FROM" name="agency_id" [(ngModel)]="booking.agency_id">
+                    <label>agency_id</label>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="form-floating">
+                    <input type="number" class="form-control" placeholder="FLYING FROM" name="client_id" [(ngModel)]="booking.client_id">
+                    <label>client_id</label>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="form-floating">
+                    <input type="number" class="form-control" placeholder="FLYING FROM" name="total" [(ngModel)]="booking.total_price">
+                    <label>total price </label>
+                </div>
+            </div>
+            <div class="col-12 mt-6">
+                <button [disabled]="isDisabled" class="btn btn-primary  colory" type="submit">update Booking<i class="fa fa-plane ms-3"></i></button>
+            </div>
+        </div>
+    </form>
+    </div>
+</main>

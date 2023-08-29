@@ -1,0 +1,50 @@
+<main id="main" class="main">
+    <section class="section dashboard">
+        <div class="box " *ngIf="vehicules">
+            <div class="images">
+                <div class="img-holder active">
+                    <img [src]="pathImage+vehicules.images">
+                </div>
+                <div class="img-holder">
+                    <img src="assets/img/product-1.jpg">
+                </div>
+                <div class="img-holder">
+                    <img src="assets/img/product-1.jpg">
+                </div>
+                <div class="img-holder">
+                    <img src="assets/img/product-1.jpg">
+                </div>
+            </div>
+            <div class="basic-info">
+                <h1> {{vehicules!.model}}</h1>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                </div>
+                <span>${{vehicules!.daily_price}}</span>
+            </div>
+            <div class="description">
+                <p></p>
+                <ul class="features">
+                    <h5>Modèle : {{vehicules!.model}}</h5>
+                    <p>Année : {{vehicules!.year}}</p>
+                    <p>Couleur : {{vehicules!.color}}</p>
+                    <p>Kilométrage : {{vehicules!.mileage}}</p>
+                    <p>daily_price : {{vehicules!.daily_price}}</p>
+                    <p>weekly_price : {{vehicules!.weekly_price}}</p>
+                    <p>monthly_price : {{vehicules!.monthly_price}}</p>
+
+                </ul>
+                <ul class="social">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
+            </div>
+         </div>
+    </section>
+ </main>
+ 

@@ -1,0 +1,123 @@
+<main id="main" class="main">
+    <div class="card p-4 mt-2">
+        <form #form="ngForm" (ngSubmit)="insertBooking(form)" enctype="multipart/form-data">
+            <div class="row g-3">
+                <div class="col-12 mb-4">
+                    <h4>Réservation de vehicule</h4>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-floating">
+                        <input type="text"
+                               class="form-control" 
+                               placeholder="FLYING FROM" 
+                               name="pickup_location"
+                               [(ngModel)]="booking.pickup_location" 
+                               #pickup_location="ngModel" 
+                               required minlength="1"
+                               maxlength="250" 
+                               class="form-control form-control-sm"
+                              [class.is-invalid]="pickup_location.invalid && (pickup_location.dirty || pickup_location.touched)"
+                            >
+                        <label>Lieu de départ</label>
+                        <div *ngIf="pickup_location.invalid && (pickup_location.dirty || pickup_location.touched)"
+                        class="invalid-feedback">
+                        <div class="text-danger" *ngIf="pickup_date.errors?.['required']">
+                            * Ce champ Lieu de départ est obligatoire.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-floating">
+                        <input type="text" 
+                               class="form-control" 
+                               placeholder="FLYING TO" 
+                               name="return_location"
+                               [(ngModel)]="booking.return_location"
+                               #return_location="ngModel" 
+                               required minlength="1"
+                               maxlength="250" 
+                               class="form-control form-control-sm"
+                              [class.is-invalid]="return_location.invalid && (return_location.dirty || return_location.touched)"
+                            >
+                        <label> Lieu d'arrivée</label>
+                        <div *ngIf="return_location.invalid && (return_location.dirty || return_location.touched)"
+                        class="invalid-feedback">
+                        <div class="text-danger" *ngIf="return_location.errors?.['required']">
+                            * Ce champ Lieu d'arrivée est obligatoire.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-floating">
+                        <input type="datetime-local" class="form-control" placeholder="Date de départ " name="pickup_date"
+                            [(ngModel)]="booking.pickup_date" required #pickup_date="ngModel" required minlength="1"
+                            maxlength="250" class="form-control form-control-sm"
+                            [class.is-invalid]="pickup_date.invalid && (pickup_date.dirty || pickup_date.touched)">
+                        <label>Date de départ </label>
+                        <div *ngIf="pickup_date.invalid && (pickup_date.dirty || pickup_date.touched)"
+                            class="invalid-feedback">
+                            <div class="text-danger" *ngIf="pickup_date.errors?.['required']">
+                                * Ce champ Date de départ est obligatoire.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-floating">
+                        <input type="datetime-local" 
+                               class="form-control" 
+                               placeholder="Date d'arrivée" 
+                               name="return_date"
+                               [(ngModel)]="booking.return_date"
+                               required #return_date="ngModel"
+                               required minlength="1" maxlength="250" 
+                               class="form-control form-control-sm"
+                               [class.is-invalid]="return_date.invalid && (return_date.dirty || return_date.touched)"
+                               >
+                        <label>Date d'arrivée</label>
+                        <div *ngIf="return_date.invalid && (return_date.dirty || return_date.touched)"
+                        class="invalid-feedback">
+                        <div class="text-danger" *ngIf="pickup_date.errors?.['required']">
+                            * Ce champ Date d'arrivée est obligatoire.
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" placeholder="FLYING FROM" name="vehicule_id"
+                            [(ngModel)]="booking.vehicule_id">
+                        <label>vehicule_id</label>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" placeholder="FLYING FROM" name="agency_id"
+                            [(ngModel)]="booking.agency_id">
+                        <label>agency_id</label>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" placeholder="FLYING FROM" name="client_id"
+                            [(ngModel)]="booking.client_id">
+                        <label>client_id</label>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" placeholder="FLYING FROM" name="total"
+                            [(ngModel)]="booking.total_price">
+                        <label>total price </label>
+                    </div>
+                </div>
+                <div class="col-12 mt-6">
+                    <button [disabled]="isDisabled" class="btn btn-primary  colory" type="submit">Add Booking<i
+                            class="fa fa-plane ms-3"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

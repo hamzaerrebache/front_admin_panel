@@ -1,0 +1,83 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1> listes vehicles</h1>
+      <br>
+      <nav>
+       <div class="input-group">
+         </div>
+         <div class="input-group">
+           <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="search vehicles" id="example-search-input">
+           <span class="input-group-append">
+               <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                   <i class="fa fa-search"></i>
+               </button>
+           </span>
+           <li class="nav-item d-block d-lg-none"> <a class="nav-link nav-icon search-bar-toggle " href="#"> <i class="bi bi-search"></i> </a></li>
+       </div>
+      </nav>
+      <br>
+   </div>
+   <section class="section dashboard">
+      <div class="row">
+       <div class="col-12">
+           <div class="card top-selling overflow-auto">
+              <div class="card-body pb-0">
+                 <h5 class="card-title"> 
+                   <a routerLink="/vehicles/add" class="btn btn-dark">
+                     Add Bookings
+                  </a>
+               </h5> 
+                 <table class="table table-borderless">
+                    <thead>
+                       <tr>
+                           <th scope="col">id</th>
+                           <th scope="col"> mail</th>
+                           <th scope="col">first_name_client</th>
+                           <th scope="col"> last_name_client</th>
+                           <th scope="col">  password_client</th>
+                           <th scope="col">  adress_client</th>
+                           <th scope="col"> code_postal_client</th>
+                           <th scope="col">  country_client</th>
+                           <th scope="col"> city_client</th>
+                           <th scope="col"> pays_client</th>
+                           <th scope="col">  pickup_date</th>
+                           <th scope="col"> pickup_date</th>
+                           <th scope="col"> return_location</th>
+                           <th scope="col"> return_date</th>
+                           <th scope="col">  total_price</th>
+                           <th scope="col"> vehicule_id </th>
+                           <th scope="col"> agency_id </th>
+                           <th scope="col">  client_id</th>
+                         
+                       </tr>
+                    </thead>
+                    <tbody>
+                         <tr *ngFor="let clientsBooking of clientsBookings" >
+                             <td>{{clientsBooking.id}}</td>
+                             <td>{{clientsBooking.mail}}</td>
+                             <td>{{clientsBooking.first_name_client}}</td>
+                             <td>{{clientsBooking.last_name_client}}</td>
+                             <td>{{clientsBooking.password_client}}</td>
+                             <td>{{clientsBooking.adress_client}}</td>
+                             <td>{{clientsBooking.code_postal_client}}</td>
+                             <td>{{clientsBooking.country_client}}</td>
+                             <td>{{clientsBooking.city_client}}</td>
+                             <td>{{clientsBooking.pays_client}}</td>
+                             <td>{{clientsBooking.pickup_date}}</td>
+                             <td>{{clientsBooking.pickup_date}}</td>
+                             <td>{{clientsBooking.return_location}}</td>
+                             <td>{{clientsBooking.return_date}}</td>
+                             <td>{{clientsBooking.total_price}}</td>
+                             <td>{{clientsBooking.vehicule_id}}</td>
+                             <td>{{clientsBooking.agency_id}}</td>
+                             <td>{{clientsBooking.client_id}}</td> 
+                         </tr>
+                </tbody>
+                 </table>
+                 
+              </div>
+           </div>
+        </div>
+       </div>
+   </section>
+</main>

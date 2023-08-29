@@ -1,0 +1,85 @@
+<main id="main" class="main">
+    <section class="section">
+       <div class="row" *ngIf="!submitted">
+          <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Forms Add Clients</h5>
+                  <form class="row g-3" (ngSubmit)="insertClient()" enctype="multipart/form-data">
+                     <div class="col-md-6">
+                        <div class="form-floating"> 
+                           <input type="text" id="floatingmodel" class="form-control"  name="first_name_client" id="first"  placeholder="First name" [(ngModel)]="client.first_name_client"> 
+                           <label for="first">First name</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating"> 
+                            <input type="text" class="form-control"  name="last_name_client" id="last" placeholder="Last name" [(ngModel)]="client.last_name_client"> 
+                            <label for="last">Last name</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control"  name="mail" id="email" placeholder="email" [(ngModel)]="client.mail" > 
+                            <label>email</label> 
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="col-md-12">
+                           <div class="form-floating">
+                            <input type="password" class="form-control"  name="password_client" id="Password" placeholder="Password" [(ngModel)]="client.password_client"> 
+                            <label for="Password">Password</label>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control"  name="adress_client" id="adress" placeholder="adress" [(ngModel)]="client.adress_client" > 
+                            <label for="adress">adress</label>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating"> 
+                            <input type="number" class="form-control"  name="code_postal_client" id="code_postal" placeholder="code postal" [(ngModel)]="client.code_postal_client"> 
+                            <label for="code_postal">code postal</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control"  name="city_client" id="city" placeholder="city" [(ngModel)]="client.city_client" > 
+                           <label for="city">city</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control"  name="country_client" id="country" placeholder="country" [(ngModel)]="client.country_client" > 
+                            <label for="country">country</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control"  name="pays_client" id="pays" placeholder="pays" [(ngModel)]="client.pays_client" > 
+                            <label for="pays">pays</label>
+                        </div>
+                     </div>
+                     <div class="text-center"> 
+                        <button [disabled]="isDisabled" type="submit" class="btn btn-primary">Submit</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+          </div>
+       </div>
+       <div class="row" *ngIf="submitted">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">L'ajout de clients </h5>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert"> A simple success alert—check it out! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>                 
+               </div>
+            </div>
+         </div>
+      </div>
+    </section>
+ </main>
+

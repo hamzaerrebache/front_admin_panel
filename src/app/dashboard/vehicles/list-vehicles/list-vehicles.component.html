@@ -1,0 +1,50 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1> listes vehicles</h1>
+   </div>
+   <section class="section dashboard">
+      <div class="row">
+       <div class="col-12">
+           <div class="card top-selling overflow-auto">
+              <div class="card-body pb-0">
+                 <h5 class="card-title"> 
+                   <a (click)="addVehicles()" class="btn btn-dark">
+                     Add vehicles
+                  </a>
+               </h5> 
+                 <table class="table table-borderless">
+                    <thead>
+                       <tr>
+                          <th scope="col">vehicles_id</th>
+                          <th scope="col">images</th>
+                          <th scope="col">model</th>
+                          <th scope="col">year</th>
+                          <th scope="col">color</th>
+                          <th scope="col">fuel_type</th>
+                          <th scope="col">actions</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                           <tr *ngFor="let vehicule of vehicules">
+                          <td class="fw-bold">#{{vehicule.id}}</td>
+                          <th scope="row" ><a href="#"><img src="{{pathImage+vehicule.images}}" height="50px" alt=""></a></th>
+                          <td>{{vehicule.model}}</td>
+                          <td class="fw-bold">{{vehicule.year}}</td>
+                          <td>{{vehicule.color}}</td>
+                          <td>{{vehicule.fuel_type}}</td>
+                          <td>
+                              <button (click)="detail(vehicule.id)"  type="button" class="btn btn-primary">view</button>
+                                <button (click)="edit(vehicule.id)"  type="button" class="btn btn-success">edit</button>
+                               <button (click)="deleteVehicles(vehicule.id)" type="button" class="btn btn-danger ">delete</button>
+                           </td>
+                       
+                       </tr>  
+                    </tbody>
+                 </table>
+                 
+              </div>
+           </div>
+        </div>
+       </div>
+   </section>
+</main>

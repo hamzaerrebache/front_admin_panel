@@ -1,0 +1,55 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1> listes vehicles</h1>
+    </div>
+    <section class="section dashboard">
+       <div class="row">
+        <div class="col-12">
+            <div class="card top-selling overflow-auto">
+               <div class="card-body pb-0">
+                  <h5 class="card-title"> 
+                    <a routerLink="/bookings/add" class="btn btn-dark">
+                      Add Bookings
+                   </a>
+                </h5> 
+                  <table class="table table-borderless">
+                     <thead>
+                        <tr>
+                           <th scope="col">id</th>
+                           <th scope="col">pickup_date</th>
+                           <th scope="col">pickup_location</th>
+                           <th scope="col">return_location</th>
+                           <th scope="col">return_date</th>
+                           <th scope="col">total_price</th>
+                           <th scope="col">vehicule_id </th>
+                           <th scope="col">client_id  </th>
+                           <th scope="col">actions</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let booking of bookings" >
+                              <td class="fw-bold">#{{booking.id}}</td>
+                              <td>{{booking.pickup_date}}</td>
+                              <td>{{booking.return_location}}</td>
+                              <td class="fw-bold">{{booking.pickup_location}}</td>
+                              <td>{{booking.return_date}}</td>
+                              <td class="fw-bold">{{booking.total_price}} MAD</td>
+                              <td>{{booking.vehicule_id}}</td> 
+                              <td>{{booking.client_id}}</td>
+                              <td>
+                                 <div class="desplay-fles">
+                                    <button (click)="edit(booking.id)" type="button" class="btn btn-success">edit</button>
+                                    <button (click)="deleteBooking(booking.id)" type="button" class="btn btn-danger ">delete</button>
+                                 </div>
+                              </td>     
+                        </tr>  
+                 </tbody>
+                  </table>
+                  
+               </div>
+            </div>
+         </div>
+        </div>
+    </section>
+ </main>
+ 

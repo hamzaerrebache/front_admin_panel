@@ -1,0 +1,120 @@
+<main>
+    <div class="container">
+       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+          <div class="container">
+             <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                   <div class="d-flex justify-content-center py-4"> <a routerLink="/" class="logo d-flex align-items-center w-auto"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">Admin</span> </a></div>
+                   <div class="card mb-3">
+                      <div class="card-body">
+                         <div class="pt-4 pb-2">
+                            <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                            <!--<p class="text-center small">Enter your personal details to create account</p>-->
+                         </div>
+                         <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                            <!-- Errors 
+                            <div class="col-12">
+                                 <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+                                 {{ errors?.name }}
+                                 </div>
+                                 <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+                                    {{ errors?.email }}
+                                 </div>
+                                 <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+                                    {{ errors?.password }}
+                                 </div>
+                                 <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
+                                    {{ errors?.password_confirmation }}
+                                 </div>
+                                 <div *ngIf="errors?.image_user" class="alert alert-danger mt-3">
+                                    {{ errors?.image_user }}
+                                 </div>
+                                 <div *ngIf="errors?.First_name" class="alert alert-danger mt-3">
+                                    {{ errors?.First_name }}
+                                 </div>
+                                 <div *ngIf="errors?.Last_name" class="alert alert-danger mt-3">
+                                    {{ errors?.Last_name }}
+                                 </div>
+                                 <div *ngIf="errors?.phone_number" class="alert alert-danger mt-3">
+                                    {{ errors?.phone_number }}
+                                 </div>
+                                 <div *ngIf="errors?.adress" class="alert alert-danger mt-3">
+                                    {{ errors?.adress }}
+                                 </div>
+                                 <div *ngIf="errors?.city" class="alert alert-danger mt-3">
+                                    {{ errors?.city }}
+                                 </div>
+                                 <div *ngIf="errors?.country" class="alert alert-danger mt-3">
+                                    {{ errors?.country }}
+                                 </div>
+                            </div>
+                           -->
+                            <div class="col-12">
+                               <label for="yourName" class="form-label">Your Name</label> 
+                               <input type="text" name="name" class="form-control" id="yourName" required  [(ngModel)]="user.name">
+                               <div class="invalid-feedback">Please, enter your name!</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="yourEmail" class="form-label">Your Email</label> 
+                               <input type="email" name="email" class="form-control" id="yourEmail" required [(ngModel)]="user.email">
+                               <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                            </div>
+                            <div class="col-12">
+                              <label for="yourPassword" class="form-label">Password</label> 
+                              <input type="password" name="password" class="form-control" id="yourPassword" required [(ngModel)]="user.password">
+                              <div class="invalid-feedback">Please enter your password!</div>
+                            </div>
+                            <div class="col-12">
+                               <label for="yourPassword" class="form-label">Password conformition</label>
+                                <input type="password" name="password" class="form-control" id="yourPassword" required [(ngModel)]="user.password_confirmation">
+                               <div class="invalid-feedback">Please enter your password conformition!</div>
+                            </div>
+                            <div class="col-12">
+                              <label for="yourImage_user" class="form-label">Your image</label> 
+                              <input type="file" name="image_user" class="form-control" id="yourImage_user" required  (change)="onFileSelected($event)" >
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="yourFirst_name" class="form-label">First name</label> 
+                              <input type="text" name="First_name" class="form-control" id="yourFirst_name" required [(ngModel)]="user.First_name">
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="yourLast_name" class="form-label">Last Name</label> 
+                              <input type="text" name="Last_name" class="form-control" id="yourLast_name" required [(ngModel)]="user.Last_name">
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="yourPhone_number" class="form-label"> phone</label> 
+                              <input type="text" name="phone_number" class="form-control" id="yourPhone_number" required [(ngModel)]="user.phone_number">
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="yourAdress" class="form-label"> adress</label> 
+                              <input type="text" name="adress" class="form-control" id="yourAdress" required [(ngModel)]="user.adress">
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="yourCity" class="form-label">city</label> 
+                              <input type="text" name="city" class="form-control" id="yourCity" required [(ngModel)]="user.city">
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="yourCountry" class="form-label">country</label> 
+                              <input type="text" name="country" class="form-control" id="yourCountry" required [(ngModel)]="user.country">
+                              <div class="invalid-feedback">Please, enter your name!</div>
+                           </div>
+                            <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Create Account</button></div>
+                            <div class="col-12">
+                               <p class="small mb-0">Already have an account? <a routerLink="/pages-login">Log in</a></p>
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                   <div class="credits"> Loved by <a href="https://freeetemplates.com/">FreeeTemplates</a></div>
+                </div>
+             </div>
+          </div>
+       </section>
+    </div>
+ </main>

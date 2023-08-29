@@ -1,0 +1,50 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1> listes vehicles</h1>
+    </div>
+    <section class="section dashboard">
+       <div class="row">
+        <div class="col-12">
+            <div class="card top-selling overflow-auto">
+               <div class="card-body pb-0">
+                  <h5 class="card-title"> 
+                    <a  class="btn btn-dark">
+                      Add vehicles
+                   </a>
+                </h5> 
+                  <table class="table table-borderless">
+                     <thead>
+                        <tr>
+                           <th scope="col">offers_id</th>
+                           <th scope="col">offre_name</th>
+                           <th scope="col">offre_dscount</th>
+                           <th scope="col">start_date</th>
+                           <th scope="col">end_date</th>
+                           <th scope="col">agency_id</th>
+                           <th scope="col">actions</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                            <tr *ngFor="let offre of offers">
+                           <td class="fw-bold">#{{offre.id}}</td>
+                           <td>{{offre.offre_name}}</td>
+                           <td class="fw-bold">{{offre.offre_dscount}}</td>
+                           <td>{{offre.start_date}}</td>
+                           <td>{{offre.end_date}}</td>
+                           <td>{{offre.agency_id}}</td>
+                           <td>
+                               <button (click)="detail()"  type="button" class="btn btn-primary">view</button>
+                                 <button (click)="edit()"  type="button" class="btn btn-success">edit</button>
+                                <button (click)="deleteOffers(offre.id)" type="button" class="btn btn-danger ">delete</button>
+                            </td>
+                        </tr>  
+                     </tbody>
+                  </table>
+                  
+               </div>
+            </div>
+         </div>
+        </div>
+    </section>
+ </main>
+ 

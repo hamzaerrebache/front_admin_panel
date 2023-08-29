@@ -1,0 +1,274 @@
+<main id="main" class="main">
+    <section class="section">
+       <div class="row" *ngIf="!submitted">
+          <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Forms update vehicules</h5>
+                  <form class="row g-3"  (ngSubmit)="updateVehicle()" enctype="multipart/form-data" *ngIf="vehicule">
+                     <div class="col-md-6">
+                        <div class="form-floating"> 
+                           <input
+                            type="text"
+                            class="form-control"
+                            name="model" id="model" 
+                            placeholder="model"
+                            [(ngModel)]="vehicule.model"
+                            #model="ngModel" 
+                            required minlength="1" maxlength="250"
+                            class="form-control form-control-sm" [class.is-invalid]="model.invalid && (model.dirty || model.touched)"
+                                 > 
+                           <label for="model">Modèle :</label>
+                           <div *ngIf="model.invalid && (model.dirty || model.touched)" class="invalid-feedback">
+                              <div *ngIf="model.errors?.['required']">
+                               * Ce champ Modèle est obligatoire.
+                              </div>
+                              <div *ngIf="model.errors?.['minlength']">
+                              * Ce champ Modèle doit avoir au moins 1 caractère.
+                              </div>
+                              <div *ngIf="model.errors?.['maxlength']">
+                              * Ce champ Modèle doit comporter au maximum 250 caractères.
+                              </div>
+                            </div>
+                        </div>
+                           
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating"> 
+                            <input 
+                             type="date" 
+                             class="form-control" 
+                             name="year" 
+                             id="floatingyear" 
+                             placeholder="year"  
+                             [(ngModel)]="vehicule.year"
+                             #year="ngModel" 
+                             required 
+                           
+                             class="form-control form-control-sm" [class.is-invalid]="year.invalid && (year.dirty || year.touched)"
+                             >
+                            <label for="floatingyear">Année :</label>
+                            <div *ngIf="year.invalid && (year.dirty || year.touched)" class="invalid-feedback">
+                              <div *ngIf="year.errors?.['required']">
+                                * Ce champ Année est obligatoire.
+                              </div>
+                              <div *ngIf="!year.errors?.['required'] &&  year.errors?.['yearValidator']">
+                                 L'année doit être un nombre à 4 chiffres.
+                              </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select 
+                              class="form-select" 
+                              name="color" 
+                              id="floatingColor"
+                              aria-label="State" 
+                              [(ngModel)]="vehicule.color"
+                              #color="ngModel" 
+                              required 
+                              class="form-control form-control-sm" [class.is-invalid]="color.invalid && (color.dirty || color.touched)">
+                               <option value="">-- Sélectionner Couleur --</option>
+                               <option *ngFor="let color of colors" [value]="color">{{color}}</option>
+                            </select>
+                            <label for="floatingColor">Couleur :</label>
+                            <div *ngIf="color.invalid && (color.dirty || color.touched)" class="invalid-feedback">
+                              <div *ngIf="color.errors?.['required']">
+                               * Ce champ Couleur est obligatoire.
+                              </div>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="col-md-12">
+                           <div class="form-floating">
+                               <input
+                                    type="number"
+                                    class="form-control" 
+                                    name="mileage" 
+                                    id="floatingMileage" 
+                                    placeholder="mileage" 
+                                    [(ngModel)]="vehicule.mileage"
+                                    #mileage="ngModel" 
+                                    required  
+                                    min="0" max="250000" minlength="1" maxlength="10"
+                                    class="form-control form-control-sm" [class.is-invalid]="mileage.invalid && (mileage.dirty || mileage.touched)"> 
+                               <label for="floatingMileage">Kilométrage :</label>
+                               <div *ngIf="mileage.invalid && (mileage.dirty || mileage.touched)" class="invalid-feedback">
+                                 <div *ngIf="mileage.errors?.['required']">
+                                  * Ce champ Kilométrage est obligatoire.
+                                 </div>
+                                 <div *ngIf="mileage.errors?.['min']">
+                                    Le kilométrage doit être un nombre entier positif.
+                                  </div>
+                                  <div *ngIf="mileage.errors?.['minlength']">
+                                    Ce champ doit avoir au moins 1 caractère.
+                                  </div>
+                                  <div *ngIf="mileage.errors?.['max']">
+                                    le kilométrage maximum pour une vehicule 250 000 kilomètres
+                                  </div>
+                               </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select 
+                                class="form-select" 
+                                name="fuel_type" 
+                                id="floatingSelect" 
+                                aria-label="State"  
+                                [(ngModel)]="vehicule.fuel_type"
+                                #fuel_type="ngModel" 
+                                required 
+                                min="0" max="10000" minlength="1" maxlength="10"
+                                class="form-control form-control-sm" [class.is-invalid]="fuel_type.invalid && (fuel_type.dirty || fuel_type.touched)">
+                              <option value="">-- Sélectionner un type de carburant --</option>
+                              <option *ngFor="let fuel_type of fuel_types" [value]="fuel_type">{{fuel_type}}</option>
+                            </select>
+                            <label for="floatingSelect">Type de carburant:</label>
+                            <div *ngIf="fuel_type.invalid && (fuel_type.dirty || fuel_type.touched)" class="invalid-feedback">
+                              <div *ngIf="fuel_type.errors?.['required']">
+                               * Ce champ type de carburant est obligatoire.
+                              </div>
+                              <div *ngIf="mileage.errors?.['min']">
+                                 Le kilométrage doit être un nombre entier positif.
+                               </div>
+                               <div *ngIf="mileage.errors?.['minlength']">
+                                 Ce champ doit avoir au moins 1 caractère.
+                               </div>
+                               <div *ngIf="mileage.errors?.['max']">
+                                 le kilométrage maximum pour une vehicule 250 000 kilomètres
+                               </div>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating"> 
+                           <input 
+                               type="number" 
+                               class="form-control" 
+                               name="daily_price" 
+                               id="floatingdailyprice" 
+                               placeholder="dailyprice"  
+                               [(ngModel)]="vehicule.daily_price"
+                               #daily_price="ngModel" 
+                               required 
+                               min="0" max="10000" minlength="1" maxlength="10"
+                               class="form-control form-control-sm" [class.is-invalid]="daily_price.invalid && (daily_price.dirty || daily_price.touched)"
+                               > 
+                           <label for="dailyprice">Prix quotidien :</label>
+                           <div *ngIf="daily_price.invalid && (daily_price.dirty || daily_price.touched)" class="invalid-feedback">
+                              <div *ngIf="daily_price.errors?.['required']">
+                               * Ce champ prix quotidien est obligatoire.
+                              </div>
+                              <div *ngIf="mileage.errors?.['min']">
+                                 Ce champ doit être un nombre entier positif.
+                               </div>
+                               <div *ngIf="mileage.errors?.['minlength']">
+                                 Ce champ doit avoir au moins 1 caractère.
+                               </div>
+                               <div *ngIf="mileage.errors?.['max']">
+                                 Ce champ maximum pour une prix 250 0000 DH
+                               </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating">
+                            <input 
+                                  type="number" 
+                                  class="form-control" 
+                                  name="weekly_price" 
+                                  id="weeklyprice" 
+                                  placeholder="floatingweeklyprice"  
+                                  [(ngModel)]="vehicule.weekly_price"
+                                  #weekly_price="ngModel" 
+                                  required 
+                                  min="0" max="10000" minlength="1" maxlength="10"
+                                  class="form-control form-control-sm" [class.is-invalid]="weekly_price.invalid && (weekly_price.dirty || weekly_price.touched)"
+                                  >
+                             <label for="floatingweeklyprice">Prix hebdomadaire:</label>
+                             <div *ngIf="weekly_price.invalid && (weekly_price.dirty || weekly_price.touched)" class="invalid-feedback">
+                              <div *ngIf="weekly_price.errors?.['required']">
+                               * Ce champ prix hebdomadaire est obligatoire.
+                              </div>
+                              <div *ngIf="mileage.errors?.['min']">
+                                 Ce champ doit être un nombre entier positif.
+                               </div>
+                               <div *ngIf="mileage.errors?.['minlength']">
+                                 Ce champ doit avoir au moins 1 caractère.
+                               </div>
+                               <div *ngIf="mileage.errors?.['max']">
+                                 Ce champ maximum pour une prix 250 0000 DH
+                               </div>
+                            </div>
+                           </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating">
+                            <input 
+                                 type="number" 
+                                 class="form-control" 
+                                 name="monthly_price" 
+                                 id="floatingmonthlyprice" 
+                                 placeholder="monthlyprice"  
+                                 [(ngModel)]="vehicule.monthly_price"
+                                 #monthly_price="ngModel" 
+                                 required 
+                                 class="form-control form-control-sm" [class.is-invalid]="monthly_price.invalid && (monthly_price.dirty || monthly_price.touched)"
+                                 > 
+                           <label for="floatingmonthlyprice">Prix mensuel :</label>
+                           <div *ngIf="monthly_price.invalid && (monthly_price.dirty || monthly_price.touched)" class="invalid-feedback">
+                              <div *ngIf="monthly_price.errors?.['required']">
+                                * Ce champ prix mensuel  est obligatoire.
+                              </div>
+                              <div *ngIf="mileage.errors?.['min']">
+                                 Ce champ doit être un nombre entier positif.
+                               </div>
+                               <div *ngIf="mileage.errors?.['minlength']">
+                                 Ce champ doit avoir au moins 1 caractère.
+                               </div>
+                               <div *ngIf="mileage.errors?.['max']">
+                                 Ce champ maximum pour une prix 250 0000 DH
+                               </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" name="agency_id" id="weeklyprice" placeholder="floatingweeklyprice"  [(ngModel)]="vehicule.agency_id">
+                             <label for="floatingweeklyprice">agency_id :</label></div>
+                     </div>
+                     <div class="col-md-6">
+                        <label for="floatingImages">image vehicles</label>
+                       <input 
+                       type="file"
+                        name="images" 
+                         class="form-control" 
+                         id="floatingImages" 
+                         (change)="onFileSelected($event)"
+                         required > 
+                     </div>
+                     <div class="text-center">
+                         <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                  </form>
+               </div>
+            </div>
+          </div>
+       </div>
+       <div class="row" >
+         <div class="col-lg-12" *ngIf="submitted">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title"> updated  de vehicule </h5>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">Vehicle has been updated successfully<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>                 
+               </div>
+            </div>
+         </div>
+      </div>
+    </section>
+ </main>
+
